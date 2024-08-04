@@ -1,0 +1,23 @@
+# Use root/example as user/password credentials
+version: '3.8'
+
+services:
+
+  mongo:
+    image: mongo:latest
+    restart: always
+    container_name: mongodb-sebas
+    hostname: host-mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+
+      volumes:
+      - ./mongo:/data/db
+      - ./mongo/log:/var/log/mongodb/
+    
+
+      
+    ports:
+      - "27017:27017" 
+    
